@@ -1,0 +1,10 @@
+<annotation>
+	<folder>dataset_genannotations</folder>
+	<filename></filename>
+	<source>my_randomgazebomaster_pkg</source>
+	<size>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	
+</annotation>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<launch>
+  <param name="/use_sim_time" value="true" />
+  <arg name="robot_name"/>
+  <arg name="init_pose"/>
+  <arg name= "limited" default= "false"/>
+  <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
+  <arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface" />
+  <arg name="gui" default="true" doc="Starts gazebo gui" />
+  <param unless="$(arg limited)" name="robot_description" command="$(find xacro)/xacro --inorder '$(find ur_description)/urdf/ur5_robot.urdf.xacro' transmission_hw_interface:=$(arg transmission_hw_interface)" />
+  <param if="$(arg limited)" name="robot_description" command="$(find xacro)/xacro --inorder '$(find ur_description)/urdf/ur5_joint_limited_robot.urdf.xacro' transmission_hw_interface:=$(arg transmission_hw_interface)" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" default="$(find multi_ur5)worlds/test_picking.world"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="gui" value="$(arg gui)"/>
+  </include>
+
+<!-- robot -->
+  <group ns="robot1">
+    <param name="tf_prefix" value="robot1_tf" />
+      <include file="$(find multi_ur5)/launch/multi_ur5.launch">
+        <arg name="init_pose" value="-x -0.1 -y -0.25 -z 0"/>
+        <arg name="robot_name" value="robot1"/>
+        <arg name="pose" value="-J elbow_joint 1.5 -J shoulder_lift_joint -1.22 -J shoulder_pan_joint 0"/>
+      </include>
+    </group>
+
+  
+  <group ns="robot2">
+    <param name="tf_prefix" value="robot2_tf" />
+      <include file="$(find multi_ur5)/launch/multi_ur5.launch">
+        <arg name="init_pose" value="-x 1.4 -y -0.25 -z 0"/>
+        <arg name="robot_name" value="robot2"/>
+        <arg name="pose" value="-J elbow_joint 1.5 -J shoulder_lift_joint -1.22 -J shoulder_pan_joint -3.16"/>
+      </include>
+    </group>
+</launch>

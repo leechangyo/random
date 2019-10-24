@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: multi_ur5_description
+    relative_path: urdf/multi_robot_test.urdf.xacro
+    xacro_args: "--inorder "
+  SRDF:
+    relative_path: config/ur5_robotiq2.srdf
+  CONFIG:
+    author_name: chan
+    author_email: lcgyo@naver.com
+    generated_timestamp: 1571749054

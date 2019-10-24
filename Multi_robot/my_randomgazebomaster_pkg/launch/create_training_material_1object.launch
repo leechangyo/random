@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+    <!--
+        These will be the models to generate material of,
+        put a list separated by comas no spaces
+    -->
+    <arg name="models_of_interest_list" default="object" />
+    <!--
+     These will be the models that we will wait for to be present to start,
+      put a list separated by comas no spaces
+    -->
+    <arg name="models_to_be_list" default="demo_table1,object" />
+    <arg name="number_of_elements" default="100" />
+    <arg name="env_change_settle_time" default="0.5" />
+    <arg name="show_images" default="False" />
+    <arg name="move_arm" default="False" />
+    <arg name="move_time" default="0.0" />
+    <arg name="init_index_img" default="0" />
+    <!--
+    <arg name="path_to_dataset_gen" default="/home/user/datasets_ws/randomenv_course_project" />
+    -->
+    <arg name="path_to_dataset_gen" default="None" />
+    <node name="create_training_material_node"
+          pkg="my_randomgazebomanager_pkg"
+          type="create_training_material.py"
+          args="$(arg models_of_interest_list) $(arg models_to_be_list) $(arg number_of_elements) $(arg env_change_settle_time) $(arg show_images) $(arg move_arm) $(arg move_time) $(arg init_index_img) $(arg path_to_dataset_gen)"
+          output="screen"/>
+</launch>
