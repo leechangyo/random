@@ -1,0 +1,29 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/chan/catkin_ws/devel/include",
+                "/opt/ros/kinetic/include",
+                "/home/chan/catkin_ws/src/multi_ur5/include",
+                "/home/chan/catkin_ws/src/mobile_manipulator_sim/mm_vel_control/include",
+                "/home/chan/catkin_ws/src/mobile_manipulator_sim/multiple_mm_nav/include",
+                "/home/chan/catkin_ws/src/mobile_manipulator_sim/multiple_mm_sim/include",
+                "/home/chan/catkin_ws/src/mobile_manipulator_sim/robotiq_85_gripper/robotiq_85_simulation/roboticsgroup_gazebo_plugins/include",
+                "/home/chan/catkin_ws/src/robotiq_ft_sensor/include",
+                "/home/chan/catkin_ws/src/mobile_manipulator_sim/teleop_twist_joy/include",
+                "/home/chan/catkin_ws/src/universal_robot/ur_kinematics/include",
+                "/usr/include"
+            ],
+            "name": "Linux",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}

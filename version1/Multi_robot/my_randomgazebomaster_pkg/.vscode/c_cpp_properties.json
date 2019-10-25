@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/chan/catkin_ws/devel/include",
+        "/home/chan/catkin_ws_python3/install/include",
+        "/opt/ros/kinetic/include",
+        "/home/chan/catkin_ws/src/Multi_robot/multi_ur5/include",
+        "/home/chan/catkin_ws/src/Multi_robot/multi_ur5_description/include",
+        "/home/chan/catkin_ws/src/Multi_robot/my_randomgazebomaster_pkg/include",
+        "/home/chan/catkin_ws/src/openni_camera/openni_camera/include",
+        "/home/chan/catkin_ws/src/Multi_robot/robotiq_85_gripper/robotiq_85_simulation/roboticsgroup_gazebo_plugins/include",
+        "/home/chan/catkin_ws/src/robotiq_ft_sensor/include",
+        "/home/chan/catkin_ws/src/universal_robot/ur_kinematics/include",
+        "/usr/include"
+      ],
+      "name": "Linux"
+    }
+  ]
+}

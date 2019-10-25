@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro"
+       name="ur5_robotiq2" >
+<!-- property -->
+  <property name="PI" value="3.1415926" />
+<!-- (0) Stand -->
+
+  <link name="world"/>
+
+  <!-- Stand -->
+  <link name="stand">
+    <inertial>
+        <mass value="1000" />
+        <origin xyz="0 0 0.5" rpy="0 0 0" />
+        <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+    </inertial>
+    <visual>
+        <origin xyz="0 0 0.5" rpy="0 0 0" />
+        <geometry>
+            <cylinder length="1.0" radius="0.1" />
+        </geometry>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0.5" rpy="0 0 0" />
+        <geometry>
+            <!-- <box size="0.2 0.2 1.0" /> -->
+            <cylinder length="1.0" radius="0.1" />
+        </geometry>
+    </collision>
+  </link>
+
+  <joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="stand"/>
+  </joint>  
+  <!-- camera1 stand -->
+  <link name="camera1_stand">
+    <!-- <origin xyz="0.6 1 2" rpy="0 0.785 -1.57" /> -->
+    <origin xyz="0 0 0 " rpy="0 0 0" />
+    </link>
+
+  <joint name="camera_fixed" type="fixed">
+    <parent link="world"/>
+    <child link="camera1_stand"/>
+    <origin xyz="0.7 1.25 2" rpy="-2.355 0.0 3.14" /> 
+    <!-- camera position x - robot position = x , camera postion y - robot poisition = y -->
+    <!-- use this parameter  -->
+  </joint>  
+  <!-- camera2 stand -->
+  <link name="camera2_stand">
+  <origin xyz="0 0 0 " rpy="0 0 0" />
+  </link>
+
+  <joint name="camera2_fixed" type="fixed">
+    <parent link="world"/>
+    <child link="camera2_stand"/>
+    <origin xyz="-0.8 -1.25 2" rpy="3.925 0.0 0" /> 
+    <!-- camera position x - robot position = x , camera postion y - robot poisition = y -->
+  </joint>  
+
+<!-- (1) UR5 (extracted from "ur_description/ur5_upload.launch" from "universal_robot" package-->
+
+  <!-- common stuff -->
+  <xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro" />
+  <!-- ur5 -->
+  <xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro" />
+
+  <!-- arm -->
+  <xacro:ur5_robot prefix="" joint_limited="false"/>
+  <!-- gripper -->
+  <xacro:include filename="$(find robotiq_85_description)/urdf/robotiq_85_gripper.urdf.xacro" />
+  <xacro:robotiq_85_gripper prefix="" parent="tool0" >
+      <origin xyz="0.0 0 0.005" rpy="0 ${-PI/2} 0"/>
+  </xacro:robotiq_85_gripper>
+  <!-- <link name="world" /> -->
+
+  <joint name="stand_joint" type="fixed">
+    <parent link="stand" />
+    <child link = "base_link" />
+    <origin xyz="0.0 0.0 1.1" rpy="0.0 0.0 1.5" />
+  </joint>
+<!-- camera -->
+
+</robot>
